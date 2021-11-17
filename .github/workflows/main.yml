@@ -18,9 +18,9 @@ jobs:
       with:
         dotnet-version: 6.0.x
     - name: Restore dependencies
-      run: dotnet restore ./MinimalApi/MinimalApi.csproj
+      run: dotnet restore 
     - name: Build
-      run: dotnet  build ./MinimalApi/MinimalApi.csproj --no-restore
+      run: dotnet  build  --no-restore
 
 
   publish:
@@ -33,6 +33,5 @@ jobs:
       with:
         image: dvhd/minimal-api
         registry: docker.io
-        dockerfile: MinimalApi/Dockerfile
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
