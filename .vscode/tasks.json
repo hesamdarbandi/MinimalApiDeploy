@@ -47,12 +47,12 @@
             "dockerBuild": {
                 "tag": "minimal:dev",
                 "target": "base",
-                "dockerfile": "${workspaceFolder}/MinimalApi/Dockerfile",
+                "dockerfile": "${workspaceFolder}/Dockerfile",
                 "context": "${workspaceFolder}",
                 "pull": true
             },
             "netCore": {
-                "appProject": "${workspaceFolder}/MinimalApi/MinimalApi.csproj"
+                "appProject": "${workspaceFolder}/MinimalApi.csproj"
             }
         },
         {
@@ -63,12 +63,12 @@
             ],
             "dockerBuild": {
                 "tag": "minimal:latest",
-                "dockerfile": "${workspaceFolder}/MinimalApi/Dockerfile",
+                "dockerfile": "${workspaceFolder}/Dockerfile",
                 "context": "${workspaceFolder}",
                 "pull": true
             },
             "netCore": {
-                "appProject": "${workspaceFolder}/MinimalApi/MinimalApi.csproj"
+                "appProject": "${workspaceFolder}/MinimalApi.csproj"
             }
         },
         {
@@ -79,7 +79,7 @@
             ],
             "dockerRun": {},
             "netCore": {
-                "appProject": "${workspaceFolder}/MinimalApi/MinimalApi.csproj",
+                "appProject": "${workspaceFolder}/MinimalApi.csproj",
                 "enableDebugging": true
             }
         },
@@ -91,7 +91,7 @@
             ],
             "dockerRun": {},
             "netCore": {
-                "appProject": "${workspaceFolder}/MinimalApi/MinimalApi.csproj"
+                "appProject": "${workspaceFolder}/MinimalApi.csproj"
             }
         }
     ]
