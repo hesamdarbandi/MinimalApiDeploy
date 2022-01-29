@@ -39,6 +39,12 @@ app.MapGet("/jobs/{id}",
         return await context.Jobs.FirstOrDefaultAsync(c => c.Id == id);
     });
 
+    app.MapGet("/jobs/{id}",
+    async (int id, JobContext context) =>
+    {
+        return await context.Jobs.FirstOrDefaultAsync(c => c.Id == id);
+    });
+
 app.Run();
 
 
