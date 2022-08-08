@@ -10,40 +10,38 @@ builder.Services.AddMvcCore().AddApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
-
-//app.UseSwagger();
-//app.UseSwaggerUI();
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.MapGet("/", () => "Hello World!");
 
-app.MapGet("/jobs",
+app.MapGet("api/jobs",
    async (JobContext context) =>
    {
        return await context.Jobs.ToListAsync();
    }
 ).Produces<List<Job>>(StatusCodes.Status201Created).WithName("GetJobs").WithTags("Getters");
 
-app.MapPost("/jobs",
+app.MapPost("api/jobs",
     async ([FromBody] Job job, [FromServices] JobContext context, HttpResponse response) =>
    {
        await context.Jobs.AddAsync(job);
        await context.SaveChangesAsync();
        response.StatusCode = 201;
-       //return Results.Ok()
-
+       return response;
    });
 
-app.MapGet("/jobs/{id}",
+app.MapGet("api/jobs/{id}",
     async (int id, JobContext context) =>
     {
         return await context.Jobs.FirstOrDefaultAsync(c => c.Id == id);
     });
 
-    app.MapGet("/jobs/{id}",
-    async (int id, JobContext context) =>
-    {
-        return await context.Jobs.FirstOrDefaultAsync(c => c.Id == id);
-    });
+app.MapGet("api/jobs/{id}",
+async (int id, JobContext context) =>
+{
+    return await context.Jobs.FirstOrDefaultAsync(c => c.Id == id);
+});
 
 app.Run();
 
